@@ -127,14 +127,14 @@ def checks(tip):
 			keep = cv2.minMaxLoc(cv2.matchTemplate(img, bot_data["images"]["caught_fish"]["keep"], cv2.TM_SQDIFF))
 			if keep[0] <= 1000000:
 				mouse.move(keep[2][0], keep[2][1], absolute=True, duration=0)
-				mouse.click(button="left")
+				keyboard.press_and_release("space")
 				time.sleep(2)
 				return True
 
 			rel = cv2.minMaxLoc(cv2.matchTemplate(img, bot_data["images"]["caught_fish"]["release"], cv2.TM_SQDIFF))
 			if rel[0] <= 1000000:
 				mouse.move(rel[2][0], rel[2][1], absolute=True, duration=0)
-				mouse.click(button="left")
+				keyboard.press_and_release("backspace")
 				time.sleep(2)
 				return True
 
@@ -319,7 +319,7 @@ def action(retrieve, cast_len, num_of_rods, night_toggle, auto_time_warp_toggle,
 				mouse.press(button="left")
 				time.sleep(0.8575 + ((1.1 * cast_len) / 100))
 				mouse.release(button="left")
-				time.sleep(8 + ((4 * cast_len) / 100))
+				time.sleep(4 + ((4 * cast_len) / 100))
 		elif line_length <= 5:
 			# reel in slower if 5 meters or less
 			mouse.press(button="left")
